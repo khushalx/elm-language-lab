@@ -28,3 +28,9 @@ Short phrases work in both graph modes; the MiniLM model is primarily English. C
 - https://github.com/openai/tiktoken/blob/main/tiktoken_ext/openai_public.py
 - https://huggingface.co/docs/transformers.js/en/pipelines
 - https://huggingface.co/Xenova/all-MiniLM-L6-v2
+
+## Deploy to Vercel
+
+Import this repository with its root directory set to the repository root. The included `vercel.json` selects Vite, installs from the lockfile, and publishes `dist/`. Node.js is pinned to the tested 24.x release line.
+
+The install command sets `ONNXRUNTIME_NODE_INSTALL_CUDA=skip`. Transformers.js includes a Node ONNX dependency whose Linux installer otherwise tries to download CUDA binaries. ELM uses the browser's WASM runtime, so those server GPU binaries are unnecessary. Other dependency install scripts still run normally.
